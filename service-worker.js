@@ -8,7 +8,7 @@ const urlsToCache = [
 		'./index.html'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event)=>{
    event.waitUntil(
         caches.open(CACHE_NAME)
               .then((cache) => {
@@ -20,7 +20,7 @@ self.addEventListener('install', function(event) {
     );
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', (event)=>{
    var cacheWhitelist = [CACHE_NAME];
 
     event.waitUntil(
@@ -38,7 +38,7 @@ self.addEventListener('activate', function(event) {
 });
 
 // 現状では、この処理を書かないとService Workerが有効と判定されないようです
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event)=>{
 	event.respondWith(
         caches.match(event.request)
               .then((response) => {
