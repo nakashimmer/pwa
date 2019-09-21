@@ -5,7 +5,7 @@
   <title>お絵かきアプリ</title>
 	<meta name="mobile-web-app-capable" content="yes">
 		<style>
-			*{margin:0;padding:0;}
+			*{margin:0;padding:0;font-size:26px;}
 			#wrap{background-color:#aaa;}
 			canvas{
 				display:block;
@@ -34,6 +34,7 @@
 	<div id="wrap">
   <h1>お絵かきアプリ</h1>
 	<p id="msg">メッセージ</p>
+	<p><button onclick="update();">更新</button></p>
 
 		
 			<canvas id="canvas1" width="320" height="320"></canvas>
@@ -58,6 +59,13 @@
 			}
 		);
    }
+
+	 function update(){
+		 navigator.serviceWorker.getRegistration()
+  		.then(
+				registration => {registration.unregister();}
+			)
+	 }
   </script>
 	<script src="./canvas.js"></script>
 </body>
