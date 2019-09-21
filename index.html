@@ -2,12 +2,49 @@
 <head>
 	<!-- manifest.json呼出し -->
   <link rel="manifest" href="./manifest.json">
-  <title>github pages test</title>
+  <title>PWAサンプル</title>
+	<meta name="mobile-web-app-capable" content="yes">
+		<style>
+			*{margin:0;padding:0;}
+			#wrap{background-color:#aaa;}
+			canvas{
+				display:block;
+				margin:0 auto;
+				background-color: #fff
+			}
+			#btn{
+				display: flex;
+				margin-top:1em;
+			}
+			
+			#btn>p,#btn>button{
+				flex:1;border:0;padding:1em;
+				text-align:center;
+				background-color: transparent;
+			}
+
+			#btn>button:nth-of-type(1){background-color:black;color:white;}
+			#btn>button:nth-of-type(2){background-color:red;color:white;}
+			#btn>button:nth-of-type(3){background-color:green;color:white;}
+			#btn>button:nth-of-type(4){background-color:blue;color:white;}
+			#btn>button:nth-of-type(5){background-color:black;color:white;}
+		</style>
 </head>
 <body>
-  <h1>github pages test</h1>
+	<div id="wrap">
+  <h1>PWAサンプル</h1>
 	<p id="msg">メッセージ</p>
-	<img src="./html5.png" alt="HTML5 logo">
+
+		
+			<canvas id="canvas1" width="320" height="320"></canvas>
+			<div id="btn">
+				<button onclick="MOUSE.color='black';FINGER[0].color='black'">黒</button>
+				<button onclick="MOUSE.color='red';FINGER[0].color='red'">赤</button>
+				<button onclick="MOUSE.color='green';FINGER[0].color='green'">緑</button>
+				<button onclick="MOUSE.color='blue';FINGER[0].color='blue'">青</button>
+				<button onclick="CTX.clearRect(0,0,320,320)">クリア</button>
+			</div>
+		</div>
 
 	<script>
 	const msg=document.getElementById("msg");
@@ -22,5 +59,6 @@
 		);
    }
   </script>
+	<script src="./canvas.js"></script>
 </body>
 </html>
