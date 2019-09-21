@@ -4,7 +4,8 @@ const urlsToCache = [
     './canvas.js',
     './html5-192.png',
 		'./html5-256.png',
-		'./index.html'
+		'./index.html',
+		'./service-workers.js'
 ];
 
 self.addEventListener('install', (event)=>{
