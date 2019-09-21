@@ -33,49 +33,26 @@
 			MOUSE.y1=MOUSE.y
 		});
 		
-		//1-2.マウスを話すと、描画を禁止(myDrawをfalse)
+		//1-2.マウスを離すと、描画を禁止(myDrawをfalse)
 		CANVAS1.addEventListener("mouseup",(e)=>{
 			myDraw=false;
 		});
 
 		//2.タッチで操作
-		const FINGER=new Array;
-		for(let i=0;i<10;i++){
-			FINGER[i]={
-				x:0,y:0,x1:0,y1:0,
-				color:"rgb("
-					+Math.floor(Math.random()*16)*15+","
-					+Math.floor(Math.random()*16)*15+","
-					+Math.floor(Math.random()*16)*15
-					+")"
-			};
-		}
-
-		//2-1.タッチした瞬間座標を取得
-		CANVAS1.addEventListener("touchstart",(e)=>{
-			e.preventDefault();
-			const rect = e.target.getBoundingClientRect();
-			for(let i=0;i<FINGER.length;i++){
-				FINGER[i].x1 = e.touches[i].clientX-rect.left;
-				FINGER[i].y1 = e.touches[i].clientY-rect.top;
-			}
-		});
-
+		const FINGER={x:0,y:0};
 		//2-2.タッチして動き出したら描画
 		CANVAS1.addEventListener("touchmove",(e)=>{
 			e.preventDefault();
 			CTX.lineWidth=10;
+			
 			const rect = e.target.getBoundingClientRect();
-			for(let i=0;i<FINGER.length;i++){
-				FINGER[i].x = e.touches[i].clientX-rect.left;
-				FINGER[i].y = e.touches[i].clientY-rect.top;
-				CTX.strokeStyle=FINGER[i].color;
+
+			FINGER.x = e.touches[0].clientX-rect.left;
+			FINGER.y = e.touches[0].clientY-rect.top;
+				CTX.fillStyle=FINGER.color;
 				CTX.beginPath();
-				CTX.moveTo(FINGER[i].x1,FINGER[i].y1);
-				CTX.lineTo(FINGER[i].x,FINGER[i].y);
-				CTX.lineCap="round";
-				CTX.stroke();
-				FINGER[i].x1=FINGER[i].x;
-				FINGER[i].y1=FINGER[i].y;
+				CTX.arc(FINGER.x,FINGER.y,5,0,2*Math.PI,false);
+				CTX.closePath();
+				CTX.fill();
 			}
-		});
+		);

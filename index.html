@@ -7,7 +7,7 @@
 	<meta name="mobile-web-app-capable" content="yes">
 		<style>
 			*{margin:0;padding:0;font-size:26px;}
-			#wrap{background-color:#aaa;}
+			#wrap{background-color:#aaa;width:100%;}
 			canvas{
 				display:block;
 				margin:0 auto;
@@ -35,15 +35,15 @@
 	<div id="wrap">
   <h1>お絵かきアプリ</h1>
 	<p id="msg">メッセージ</p>
-	<p><button onclick="update();">更新</button></p>
+	<p><button onclick="update();" style="border:1px solid gray;">更新</button></p>
 
 		
 			<canvas id="canvas1" width="320" height="320"></canvas>
 			<div id="btn">
-				<button onclick="MOUSE.color='black';FINGER[0].color='black'">黒</button>
-				<button onclick="MOUSE.color='red';FINGER[0].color='red'">赤</button>
-				<button onclick="MOUSE.color='green';FINGER[0].color='green'">緑</button>
-				<button onclick="MOUSE.color='blue';FINGER[0].color='blue'">青</button>
+				<button onclick="MOUSE.color='black';FINGER.color='black'">黒</button>
+				<button onclick="MOUSE.color='red';FINGER.color='red'">赤</button>
+				<button onclick="MOUSE.color='green';FINGER.color='green'">緑</button>
+				<button onclick="MOUSE.color='blue';FINGER.color='blue'">青</button>
 				<button onclick="CTX.clearRect(0,0,320,320)">クリア</button>
 			</div>
 		</div>
