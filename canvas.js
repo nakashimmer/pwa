@@ -64,7 +64,7 @@
 		//2-2.タッチして動き出したら描画
 		CANVAS1.addEventListener("touchmove",(e)=>{
 			e.preventDefault();
-			CTX.lineWidth=document.getElementById("lineWidth").value;
+			CTX.lineWidth=10;
 			const rect = e.target.getBoundingClientRect();
 			for(let i=0;i<FINGER.length;i++){
 				FINGER[i].x = e.touches[i].clientX-rect.left;
