@@ -8,7 +8,7 @@ const urlsToCache = [
 		'./index.html'
 ];
 
-self.addEventListener('install', function(e) {
+self.addEventListener('install', function(event) {
    event.waitUntil(
         caches.open(CACHE_NAME)
               .then((cache) => {
@@ -20,7 +20,7 @@ self.addEventListener('install', function(e) {
     );
 });
 
-self.addEventListener('activate', function(e) {
+self.addEventListener('activate', function(event) {
    var cacheWhitelist = [CACHE_NAME];
 
     event.waitUntil(
