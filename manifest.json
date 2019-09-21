@@ -1,6 +1,6 @@
 {
-  "name": "PWA Sample",
-  "short_name": "PWA",
+  "name": "お絵かきアプリ",
+  "short_name": "お絵かき",
   "background_color": "#fc980c",
   "icons": [{
       "src": "./html5-256.png",
