@@ -41,13 +41,18 @@ CANVAS1.addEventListener("mouseup",(e)=>{
 
 
 //2.タッチで操作
-const FINGER={x:0,y:0,x1:0,y1:0};
+const FINGER={x:0,y:0,x1:0,y1:0,color:"black"};
 //タッチ開始
-CANVAS1.addEventListener("touchdown", (e) => {
+CANVAS1.addEventListener("touchstart", (e) => {
 	e.preventDefault();
-	FINGER.x1=e.touches[0].clientX;
-	FINGER.y1=e.touches[0].clientY;
-}
+	const rect = e.target.getBoundingClientRect();
+
+	FINGER.x1 = e.touches[0].clientX - rect.left;
+	FINGER.y1 = e.touches[0].clientY - rect.top;
+	
+
+	
+});
 
 //2-2.タッチして動き出したら描画
 CANVAS1.addEventListener("touchmove",(e)=>{
@@ -58,11 +63,17 @@ CANVAS1.addEventListener("touchmove",(e)=>{
 
 	FINGER.x = e.touches[0].clientX-rect.left;
 	FINGER.y = e.touches[0].clientY-rect.top;
-	CTX.fillStyle=FINGER.color;
+	
 	CTX.beginPath();
 	CTX.moveTo(FINGER.x1, FINGER.y1);
 	CTX.lineTo(FINGER.x, FINGER.y);
+	CTX.lineCap="round";
+	CTX.strokeStyle = FINGER.color;
 	CTX.stroke();
 	FINGER.x1=FINGER.x;
-	FINGER.y1=FINGER.y
+	FINGER.y1=FINGER.y;
+});
+
+CANVAS1.addEventListener("touchend", (e) => {
+	CTX.closePath();
 });
