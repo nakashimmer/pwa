@@ -38,8 +38,17 @@ CANVAS1.addEventListener("mouseup",(e)=>{
 	myDraw=false;
 });
 
+
+
 //2.タッチで操作
-const FINGER={x:0,y:0};
+const FINGER={x:0,y:0,x1:0,y1:0};
+//タッチ開始
+CANVAS1.addEventListener("touchdown", (e) => {
+	e.preventDefault();
+	FINGER.x1=e.touches[0].clientX;
+	FINGER.y1=e.touches[0].clientY;
+}
+
 //2-2.タッチして動き出したら描画
 CANVAS1.addEventListener("touchmove",(e)=>{
 	e.preventDefault();
@@ -51,7 +60,9 @@ CANVAS1.addEventListener("touchmove",(e)=>{
 	FINGER.y = e.touches[0].clientY-rect.top;
 	CTX.fillStyle=FINGER.color;
 	CTX.beginPath();
-	CTX.arc(FINGER.x,FINGER.y,5,0,2*Math.PI,false);
-	CTX.closePath();
-	CTX.fill();
+	CTX.moveTo(FINGER.x1, FINGER.y1);
+	CTX.lineTo(FINGER.x, FINGER.y);
+	CTX.stroke();
+	FINGER.x1=FINGER.x;
+	FINGER.y1=FINGER.y
 });
