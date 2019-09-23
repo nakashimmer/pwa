@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cache-v1';
+const CACHE_NAME = 'cachev1';
 const urlsToCache = [
 		'/',
     './apple-touch-icon.png',
