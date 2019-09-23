@@ -34,7 +34,7 @@
 </head>
 <body>
 	<div id="wrap">
-  <h1>お絵かきアプリ</h1>
+  <h1>お絵かきアプリ1</h1>
 	<p id="msg">メッセージ</p>
 		
 			<canvas id="canvas1" width="320" height="320"></canvas>
@@ -48,17 +48,23 @@
 		</div>
 
 	<script>
-	const msg=document.getElementById("msg");
-
-  // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
+  // ServiceWorker登録
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				msg.innerHTML="登録成功";
-			}).catch(function (err) {
-				console.log('ServiceWorker registration failed: ', err);
-				msg.innerHTML = "登録失敗";
-			});
+			navigator.serviceWorker.register('service-worker.js').then(
+				function (registration) {
+					console.log(
+						'ServiceWorker registration successful with scope: ', 
+						registration.scope
+					);
+				}
+			).catch(
+				function (err) {
+					console.log(
+						'ServiceWorker registration failed: ', 
+						err
+					);	
+				}
+			);
 		}
   </script>
 	<script src="./canvas.js"></script>
